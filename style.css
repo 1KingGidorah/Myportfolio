@@ -1,0 +1,452 @@
+/* --- BASE STYLES & CUSTOM SCROLLBAR --- */
+:root {
+    scrollbar-color: #333 #050505;
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.maheni {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    background-color: black;
+    color: white;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* --- HERO ZOOM EFFECT CONTAINERS --- */
+#hero-scroll-container {
+    height: 200vh; /* Extended for a longer, smoother zoom */
+    position: relative;
+    z-index: 10; /* Keeps Hero visually above the next section */
+}
+
+#hero-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-slice {
+    width: 90%;
+    max-width: 1200px;
+    transform-origin: center center;
+    will-change: transform, opacity;
+}
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-left {
+    flex: 1;
+    z-index: 2;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 2rem 0;
+    color: white;
+    transition: all 0.5s ease;
+    cursor: default;
+}
+
+.hero-title:hover {
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    transform: translateX(10px);
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+    font-weight: 500;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+}
+
+.hero-badge:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-image-oval {
+    width: min(400px, 40vw);
+    height: min(550px, 55vw);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 200px / 300px;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.hero-image-oval:hover {
+    transform: scale(1.05) rotate(2deg);
+    border-color: white;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+.hero-image-oval img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-footer {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+}
+
+.work-with-me {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.work-with-me svg {
+    transition: transform 0.3s ease;
+}
+
+.work-with-me:hover svg {
+    transform: translate(3px, -3px);
+}
+
+/* --- NORMAL FLOW CONTENT REFINED --- */
+#normal-content {
+    position: relative;
+    z-index: 5; /* Placed behind the zooming Hero */
+    background-color: transparent; /* Seamless overlap */
+    margin-top: -100vh; /* Pulls the section up to start entering during the zoom */
+    padding-top: 150px; /* Frames the 'About Me' text perfectly as zoom ends */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 150px; 
+    padding-bottom: 200px;
+}
+
+.content-section {
+    width: 90%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- ABOUT ME --- */
+.text-container {
+    max-width: 800px;
+    text-align: center;
+}
+
+.lead-text {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.sub-text {
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+    line-height: 1.8;
+    color: #a0a0a0; 
+}
+
+/* --- SKILLS GRID --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.skill-card h3 {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.pills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pill {
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: #d1d1d1;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover .pill {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+/* --- MEDIA GALLERY --- */
+.media-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 113%;
+    height: 1000px;
+    
+}
+
+
+.media-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    
+}
+
+.media-item video,
+.media-item img,
+.media-item iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border: none;
+    display: block;
+}
+
+.media-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; 
+}
+
+.media-item:hover .media-overlay {
+    opacity: 1;
+}
+
+.media-overlay span {
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.media-item:hover .media-overlay span {
+    transform: translateY(0);
+}
+
+/* --- PROJECT LINKS GRID --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.project-card {
+    text-decoration: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.project-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.project-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.project-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* --- CONTACT SECTION --- */
+.contact-box {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    border-radius: 20px;
+}
+
+.quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-style: italic;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+    .hero-right {
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    .hero-footer {
+        position: relative;
+        bottom: 0;
+        margin-top: 2rem;
+        justify-content: center;
+        width: 100%;
+    }
+}
+.projects-note {
+    /* 1. We make the parent relative so the underline stays attached to it */
+    position: relative; 
+    padding-bottom: 15px; /* Adds space between the text and the line */
+}
+
+.projects-note::after {
+    content: ''; /* 2. REQUIRED: Tells CSS to generate an empty box */
+    position: absolute; /* 3. Positions the box freely inside the title */
+    bottom: 0; /* Pushes it to the very bottom padding */
+    
+    /* 4. This centers the line perfectly under the text */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* 5. The actual size and color of the line */
+    width: 100px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
